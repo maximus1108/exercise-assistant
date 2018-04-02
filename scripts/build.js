@@ -3,9 +3,10 @@ var webpack = require('webpack');
 
 webpack(config, function(err, stats) {
     if (err || stats.hasErrors()) {
-      // Handle errors here
-      console.log(err)
+      // Handle errors
+      return console.log(err, stats.compilation.errors)
     }
-    console.log('built')
+    
     // Done processing
+    console.log('built');
   });

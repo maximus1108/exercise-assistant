@@ -2,6 +2,9 @@ var path = require('path');
 var webpack = require("webpack");
 var merge = require('webpack-merge');
 var common = require('./webpack.config.common.js');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 //get root.
 var root = process.cwd();
@@ -29,16 +32,43 @@ module.exports = merge(common, {
                 exclude: [
                     path.resolve(root, 'node_modules')
                 ],
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
+                use: [{
+                    loader: "style-loader"  
+                }, {
+                    loader: "css-loader",
+                    options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: "postcss-loader",
+                    options: {
+                        plugins: [
+                            autoprefixer
+                        ],
+                        sourceMap: true
+                    }
+                }, {
+                    loader: "sass-loader",
+                    options: {
+                        sourceMap: true
+                    }
+                }]
             }
         ]
     },
-    mode: "development",
+    devtool: 'source-map',
     plugins: [
-      new webpack.HotModuleReplacementPlugin()
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(root, 'public/index.html'),
+            excludeAssets: [/\.s?css/]
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'async'
+        }) 
     ]
 });

@@ -12,7 +12,9 @@ module.exports = {
                 exclude: [
                     path.resolve(root, 'node_modules')
                 ],
-                use: 'babel-loader'
+                use: [{
+                    loader: 'babel-loader'
+                }]
             }
         ]
     }

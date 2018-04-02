@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import App from './App'
 import './index.scss';
-
-class App extends Component {
-    render () {
-        return (
-            <header>Header Newest new</header>
-        )
-    }
-}
+import './critical.scss';
 
 render(<App />, document.getElementById('root'));

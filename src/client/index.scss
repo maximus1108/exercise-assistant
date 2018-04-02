@@ -1,3 +1,10 @@
+@import 'second';
+
 body {
-    background-color: rgb(230, 15, 165);
+    background-color: rgb(15, 15, 15);
+}
+
+#root {
+    transform: rotate(45deg);
+    display: flex;
 }
