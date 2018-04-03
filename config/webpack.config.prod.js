@@ -13,7 +13,7 @@ var autoprefixer = require('autoprefixer');
 //get root.
 var root = process.cwd();
 
-var externalCSS = new ExtractTextPlugin('assets/css/style.css');
+var externalCSS = new ExtractTextPlugin('assets/css/style.[hash].css');
 var criticalCSS = new ExtractTextPlugin('critical.css');
 
 module.exports = merge(common, {
@@ -22,8 +22,9 @@ module.exports = merge(common, {
     ],    
     output: {
         //Set location for where bundled js should be served
+        hashDigestLength: 6,
         path: path.resolve(root, "build"),
-        filename: "assets/js/main.js"
+        filename: "assets/js/main.[hash].js"
     },
     //loaders
     module: {
@@ -69,7 +70,27 @@ module.exports = merge(common, {
                         loader: "sass-loader"
                     }]
                 })          
+            },
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                use: [{
+                    loader: "file-loader",
+                    options:{
+                        name: 'assets/media/img/name.[hash:6].[ext]'
+                    }
+                }]
+            },
+            {
+                test: [/\.mp4$/, /\.ogg$/],
+                use: [{
+                    loader: "file-loader",
+                    options:{
+                        name: 'assets/media/vid/name.[hash:6].[ext]'
+                    }
+                }]
             }
+            
+            
         ]
     },
     plugins: [
@@ -79,7 +100,6 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             inject: true,
             template: path.resolve(root, 'public/index.html'),
-            hash: true,
             excludeAssets: [/\.s?css/],
             minify: {
                 removeComments: true,
