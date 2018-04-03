@@ -53,6 +53,16 @@ module.exports = merge(common, {
                         sourceMap: true
                     }
                 }]
+            }, {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                use: [{
+                    loader: "file-loader"
+                }]
+            },{
+                test: [/\.mp4$/, /\.ogg$/],
+                use: [{
+                    loader: "file-loader"
+                }]
             }
         ]
     },
