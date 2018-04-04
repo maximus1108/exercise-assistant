@@ -9,12 +9,12 @@ class App extends Component {
             <div>
                 <header>Header Newest webpack3</header>
                 <img src={pic} />
-                <video>
-                    <source src={vid}></source>
+                <video autoPlay playsInline>
+                    <source src={vid} ></source>
                 </video>
             </div>
         )
     }
 }
 
-export default App;
+export default App; 

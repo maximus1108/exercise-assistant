@@ -8,6 +8,7 @@ var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 var HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 var StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var PreloadCssPlugin = require("preload-css-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 
 //get root.
@@ -100,7 +101,6 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             inject: true,
             template: path.resolve(root, 'public/index.html'),
-            excludeAssets: [/\.s?css/],
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
@@ -119,6 +119,13 @@ module.exports = merge(common, {
             defaultAttribute: 'async'
         }),        
         externalCSS,
+        new PreloadCssPlugin({
+            blacklist: [/critical\.css/],
+            noscript: true,
+            linkEventHandlers: {
+                onload: "this.onload=null;this.rel='stylesheet'"
+            }
+        }),
         criticalCSS,
         new StyleExtHtmlWebpackPlugin('critical.css'),
         new OptimizeCssAssetsPlugin(),
