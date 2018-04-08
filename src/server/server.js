@@ -1,17 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-
+const router = require('./routes/index');
 const app = express();
-const router = express.Router();
+
+require('./config/db');
 
 var port = process.env.API_PORT || 3000;
-
-mongoose.connect('mongodb://admin:admin1@ds141068.mlab.com:41068/fitness-assistant');
-
-mongoose.connection.on('error', (err) => {
-    console.log('error connecting to mongodb', err);
-})
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,11 +21,6 @@ app.use(function(req, res, next) {
     res.setHeader('Cache-Control', 'no-cache');
     next();
   });
-
-  //now  we can set the route path & initialize the API
-router.get('/', function(req, res) {
-    res.json({ message: 'API Initialized!'});
-});
   
 app.use('/api', router);
 
