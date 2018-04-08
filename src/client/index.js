@@ -1,7 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM, { render } from 'react-dom';
-import App from './App'
-import './index.scss';
-import './critical.scss';
+import { 
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom';
+import Home from './App/Pages/Home/Home';
+import Login from './App/Pages/Login/Login';
 
-render(<App />, document.getElementById('root'));
+render(
+    <Router>
+        <Fragment>
+            <Route exact path="/" component={ Login } />
+            {/* <Route path="/login" component={ Login } /> */}
+        </Fragment> 
+    </Router>
+    , document.getElementById('root'));
