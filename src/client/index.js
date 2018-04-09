@@ -11,8 +11,8 @@ import Login from './App/Pages/Login/Login';
 render(
     <Router>
         <Fragment>
-            <Route exact path="/" component={ Login } />
-            {/* <Route path="/login" component={ Login } /> */}
+            <Route exact path="/" component={ Home } />
+            <Route path="/login" component={ Login } />
         </Fragment> 
     </Router>
     , document.getElementById('root'));
