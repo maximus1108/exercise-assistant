@@ -4,8 +4,14 @@ const UserSchema = new mongoose.Schema({
     email: {
         required: true,
         type: String,
-        unique: true
-    }//,
+        unique: true,
+        trim: true
+    },
+    password: {
+        required: true,
+        type: String,        
+    }
+    //,
     // firstName: {
     //     type: String,
     //     required: true
@@ -39,3 +45,7 @@ UserSchema.pre('save', function(next) {
         }
     })
 });
+
+UserSchema.methods.setPassword = plainText => {
+
+}
