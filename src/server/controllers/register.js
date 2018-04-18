@@ -14,18 +14,25 @@ module.exports = (req, res) => {
     //store the email sent in the request on the user
     User.email = req.body.email;
 
-    //save the user
-    User.save((err) => {
-        if(err){
-            console.log(err.error)
-        } 
+    User.setPassword(req.body.password)
+        .then(() => {
 
-        //send a message and an indication of
-        //whether there was an error to the client
-        res.json({ 
-            message: err && err.message || 'Success',
-            error: err ? true : false
+            // save the user
+            User.save((err) => {
+                if(err){
+                    console.log(err.error)
+                } 
+                
+                //send a message and an indication of
+                //whether there was an error to the client
+                res.json({ 
+                    message: err && err.message || 'Success',
+                    error: err ? true : false
+                })
+            })
+
         })
-    })
-    
+        .catch(e => {
+            console.log(e)
+        })
 }

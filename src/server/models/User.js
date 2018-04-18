@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -24,8 +25,6 @@ const UserSchema = new mongoose.Schema({
     // hash: String
 });
 
-const UserModel = mongoose.model('User', UserSchema);
-
 UserSchema.pre('save', function(next) {
     UserModel.findOne({ email: this.email }, 'email', (err, user) => {
         if(err) {
@@ -46,6 +45,16 @@ UserSchema.pre('save', function(next) {
     })
 });
 
-UserSchema.methods.setPassword = plainText => {
-
+UserSchema.methods.setPassword = function(plainText) {
+    return new Promise((resolve, reject) => {
+        bcrypt.hash(plainText, 12, (err, hash) => {
+            if(err) reject(err);
+            this.password = hash;
+            resolve();            
+        })
+    })
+ 
 }
+
+const UserModel = mongoose.model('User', UserSchema);
+
