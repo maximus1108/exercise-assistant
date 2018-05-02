@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -50,10 +51,27 @@ UserSchema.methods.setPassword = function(plainText) {
         bcrypt.hash(plainText, 12, (err, hash) => {
             if(err) reject(err);
             this.password = hash;
-            resolve();            
+            resolve();
         })
-    })
- 
+    }) 
+}
+
+UserSchema.methods.createJwt = function() {
+
+    let exp = new Date();
+    exp.setDate(exp.getDate() + 7);
+    exp = parseInt(exp.getTime() / 1000);
+
+    const user = 
+        Object.assign(
+            {
+                exp
+            },
+            this
+        );
+
+    return jwt.sign(user, process.env.SECRET);
+
 }
 
 const UserModel = mongoose.model('User', UserSchema);
