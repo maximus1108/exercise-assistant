@@ -56,6 +56,10 @@ UserSchema.methods.setPassword = function(plainText) {
     }) 
 }
 
+UserSchema.methods.validPassword = function(plainText) {
+    return bcrypt.compare(plainText, this.password)
+}
+
 UserSchema.methods.createJwt = function() {
 
     let exp = new Date();

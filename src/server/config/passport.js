@@ -10,16 +10,16 @@ const User = require('mongoose').model('User');
 
 passport.use(new LocalStrategy({
         usernameField: 'email'       
-    }, function(email, password, done) {
+    }, (email, password, done) => {
         console.log('local', email, password)
         User.findOne({ email })
-            .then(user => {
-               const rand = Math.round(Math.random());
-               console.log(rand)
-               if(rand)
-                return user;
-
-                throw Error('noooo');
+            .then(user => user.validPassword(password))
+            .then(passwordValid => {
+                console.log('password ...', passwordValid)
+                if(passwordValid)
+                    return user;
+                    
+                throw new Error('noooooo');
             })
             .then(user => 
                 done(null, user, {
@@ -28,7 +28,7 @@ passport.use(new LocalStrategy({
                 )
             )
             .catch(err => {
-                console.log(err, err.message)
+                console.log('in error', err, err.message)
                 done(err, null, {
                     message: err.message
                 })
