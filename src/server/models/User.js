@@ -21,9 +21,7 @@ const UserSchema = new mongoose.Schema({
     // surname: {
     //     type: String,
     //     required: true
-    // },
-    // salt: String,
-    // hash: String
+    // }
 });
 
 UserSchema.pre('save', function(next) {
