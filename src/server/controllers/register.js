@@ -21,10 +21,10 @@ module.exports = (req, res) => {
                 token
             })
         })
-        .catch(e => {
-            console.log(e);
+        .catch(err => {
+            console.log(err);
             res.json({
-                message: e && e.message,
+                message: err && err.message,
                 error: true
             })
         })

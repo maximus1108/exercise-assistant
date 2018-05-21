@@ -13,20 +13,18 @@ passport.use(new LocalStrategy({
     }, (email, password, done) => {
         User.findOne({ email })
             .then(user =>  
-                new Promise((resolve, reject) => 
-                    user.validPassword(password)
-                        .then(isValid => isValid ? resolve(user) : reject(new Error('noooooo')))
+                new Promise((resolve, reject) =>
+                    user 
+                        ? user.validPassword(password)
+                            .then(isValid => isValid ? resolve(user) : reject(new Error('Invalid password')))
+                        : reject(new Error('User does not exist'))
                 )
             )
             .then(user => 
-                done(null, user, {
-                     message: 'yay'
-                    }
-                )
+                done(null, user)
             )
             .catch(err => {
-                done(err, null, {
-                    message: err.message
-                })
+                console.log(err)
+                done(err, null)
             })
     }))
