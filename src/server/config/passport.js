@@ -32,5 +32,8 @@ passport.use(new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.SECRET
 }, (payload, done) => {
-    console.log('jwt strat', payload)
+    console.log(payload._id)
+    User.findById(payload._id)
+        .then(user => console.log(user, 'FOUND'))
+        .catch(e => console.log(e))
 }));

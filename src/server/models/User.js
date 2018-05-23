@@ -64,13 +64,12 @@ UserSchema.methods.createJwt = function() {
     exp.setDate(exp.getDate() + 7);
     exp = parseInt(exp.getTime() / 1000);
 
-    const user = 
-        Object.assign(
-            {
-                exp
-            },
-            this
-        );
+    const { _id } = this;
+
+    const user = Object.assign({
+        exp,
+        _id
+    }, this);
 
     return jwt.sign(user, process.env.SECRET);
 
