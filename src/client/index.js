@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import Home from './App/Pages/Home/Home';
 import Login from './App/Pages/Login/Login';
+import 'es6-promise';
+import 'whatwg-fetch';
 
 render(
     <Router>

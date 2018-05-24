@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     passport.authenticate('jwt', {
         session: false
     }, (err, user) => {
-        console.log('okk',err, user)
+
         if(err){
             res.json({
                 error: true,
@@ -25,5 +25,4 @@ module.exports = (req, res) => {
             });
         }
     })(req, res);
-    // console.log('done cb', err, user)
 };

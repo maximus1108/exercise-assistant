@@ -18,4 +18,4 @@ var server = new WebpackDevServer(compiler, {
 });
 
 //listen on port
-server.listen(8080);
+server.listen(3001);

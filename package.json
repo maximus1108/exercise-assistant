@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "nf start -p 3000",
+    "client:start": "node scripts/start.js",
+    "server:start": "nodemon src/server/server.js",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +16,7 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "es6-promise": "^4.2.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.13",
@@ -24,7 +27,8 @@
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",

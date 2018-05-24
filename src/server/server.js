@@ -2,19 +2,19 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./routes/index');
+const apiRouter = require('./api/routes/index');
 const app = express();
 const passport = require('passport');
 
 
-require('./config/db');
+require('./api/config/db');
 
 //GET MODELS FOR MONGOOSE
 //register our schema and model for a use with mongoonse
-require('./models/User');
+require('./api/models/User');
 
 //GET CONFIG FOR PASSPORT
-require('./config/passport')
+require('./api/config/passport')
 
 
 var port = process.env.API_PORT || 3000;
@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
     next();
   });
   
-app.use('/api', router);
+app.use('/api', apiRouter);
 
 app.listen(port, function() {
     console.log(`api running on port ${port}`);
