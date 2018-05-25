@@ -1,21 +1,22 @@
-var path = require('path');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var common = require('./webpack.config.common.js');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-var HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
-var StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var PreloadCssPlugin = require("preload-css-webpack-plugin");
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const common = require('./webpack.config.common.js');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PreloadCssPlugin = require("preload-css-webpack-plugin");
+const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 //get root.
-var root = process.cwd();
+const root = process.cwd();
 
-var externalCSS = new ExtractTextPlugin('assets/css/style.[hash].css');
-var criticalCSS = new ExtractTextPlugin('critical.css');
+const externalCSS = new ExtractTextPlugin('assets/css/style.[hash].css');
+const criticalCSS = new ExtractTextPlugin('critical.css');
 
 module.exports = merge(common, {
     entry: [
@@ -24,7 +25,7 @@ module.exports = merge(common, {
     output: {
         //Set location for where bundled js should be served
         hashDigestLength: 6,
-        path: path.resolve(root, "build"),
+        path: path.resolve(root, "build/client"),
         filename: "assets/js/main.[hash].js"
     },
     //loaders
@@ -95,6 +96,9 @@ module.exports = merge(common, {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin('build', {
+            root: root
+        }),        
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),

@@ -1,3 +1,8 @@
+//import css
+//temp files for now to enable build
+import './App/Assets/Styles/critical.scss';
+import './App/Assets/Styles/index.scss';
+
 import React, { Component, Fragment } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { 

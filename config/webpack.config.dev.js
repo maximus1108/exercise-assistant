@@ -13,7 +13,7 @@ module.exports = merge(common, {
     entry: [
       //append webpack-dev-server and hot module replacement to entry point
       //to allow for auto reloading when any dependancy is updated.
-      "webpack-dev-server/client?http://localhost:8080/",
+      "webpack-dev-server/client?http://localhost:3001/",
       "webpack/hot/dev-server",
 
       //entry point for app
