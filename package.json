@@ -6,8 +6,9 @@
   "scripts": {
     "dev:start": "nf start -p 3000",
     "client:start": "node scripts/start.js",
-    "server:start": "NODE_ENV=development nodemon src/server/api/api.js",
+    "server:start": "set NODE_ENV=development && nodemon src/server/server.js",
     "client:build": "node scripts/build.js",
+    "server:build": "node scripts/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Max Perry",
@@ -55,7 +56,8 @@
     "style-ext-html-webpack-plugin": "^3.4.7",
     "style-loader": "^0.20.3",
     "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.2"
+    "webpack-merge": "^4.1.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "babel": {
     "presets": [

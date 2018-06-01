@@ -69,7 +69,7 @@ module.exports = merge(common, {
     devtool: 'source-map',
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
+            '__SERVER__': '"http://localhost:3000"'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({

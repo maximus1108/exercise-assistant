@@ -100,7 +100,7 @@ module.exports = merge(common, {
             root: root
         }),        
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            '__SERVER__': '""'
         }),
         new HtmlWebpackPlugin({
             inject: true,

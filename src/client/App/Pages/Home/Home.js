@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
 
     componentDidMount(){
-        console.log('mounted')
-        // fetch('http://localhost:3000/api')
-        //     .then(response => response.json())
-        //     .then(json => console.log(json));
+        fetch(`${__SERVER__}/api`)
+            .then(response => response.json())
+            .then(json => console.log(json));
     }
 
     render () {

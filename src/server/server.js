@@ -20,8 +20,9 @@ if(env === 'development') {
     });
 }
 else if (env === 'production') {
-
-    const client = path.resolve('../', 'client');
+    const path = require('path');
+    
+    const client = path.resolve( 'build', 'client');
 
     app.use('/assets/js', express.static(path.resolve(client, 'assets/js')));
     app.use('/assets/css', express.static(path.resolve(client, 'assets/css')));
@@ -31,20 +32,18 @@ else if (env === 'production') {
     });
 }
 
-
 const bodyParser = require('body-parser');
-const apiRouter = require('./api/api');
+const apiRouter = require('./api');
 const passport = require('passport');
-const path = require('path');
 
-require('./config/db');
+require('./api/config/db');
 
 //GET MODELS FOR MONGOOSE
 //register our schema and model for a use with mongoonse
-require('./models/User');
+require('./api/models/User');
 
 //GET CONFIG FOR PASSPORT
-require('./config/passport');
+require('./api/config/passport');
 
 var port = process.env.API_PORT || 3000;
 
