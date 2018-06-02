@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 
-const env = process.env.NODE_ENV;
+const env = process.env.DEV_NODE_ENV || process.env.NODE_ENV;
 
 //if we are developing
 if(env === 'development') {
-    //get dummy enviroment variables from .env file
-    require('dotenv').config();
     //To prevent errors from Cross Origin Resource Sharing, we will set our headers to allow CORS with middleware like so:
     app.use(function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -45,7 +43,7 @@ require('./api/models/User');
 //GET CONFIG FOR PASSPORT
 require('./api/config/passport');
 
-var port = process.env.API_PORT || 3000;
+const port = process.env.DEV_PORT || process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
