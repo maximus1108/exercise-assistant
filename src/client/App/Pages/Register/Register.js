@@ -20,8 +20,8 @@ class Login extends Component {
         })
         .then(response => {
             const { data } = response;
-            
-            if(data.error === false && data.token) {
+            console.log(response)
+            if(data.error === false) {
                 this.props.history.push('/profile')
             }
             

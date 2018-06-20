@@ -14,13 +14,15 @@ module.exports = (req, res) => {
     User.setPassword(req.body.password)
         .then(_ => User.save())
         .then(_ => {
-
+            console.log('setting cookie')
             const token = User.createJwt();
+            
+            res.cookie('jwt', token);
 
             res.json({
-                token,
                 error: false
-            })
+            });
+
         })
         .catch(err => {
             console.log(err);

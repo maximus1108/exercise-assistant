@@ -28,8 +28,17 @@ passport.use(new LocalStrategy({
         })
 }));
 
+const extractFromCookie = req => {
+    var token = null;
+    if (req && req.cookies){
+        token = req.cookies['jwt'];
+    }
+    return token;
+}
+
 passport.use(new JwtStrategy({
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    // jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: extractFromCookie,
     secretOrKey: process.env.SECRET
 }, (payload, done) => {
     User.findById(payload._id)
