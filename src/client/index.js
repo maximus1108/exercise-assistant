@@ -12,14 +12,16 @@ import {
 } from 'react-router-dom';
 import Home from './App/Pages/Home/Home';
 import Login from './App/Pages/Login/Login';
-import 'es6-promise';
-import 'whatwg-fetch';
+import Register from './App/Pages/Register/Register';
+import Profile from './App/Pages/Profile/Profile';
 
 render(
     <Router>
         <Fragment>
             <Route exact path="/" component={ Home } />
             <Route path="/login" component={ Login } />
+            <Route path="/register" component={ Register } />
+            <Route path="/profile" component={ Profile } />
         </Fragment> 
     </Router>
     , document.getElementById('root'));

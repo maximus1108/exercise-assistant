@@ -14,7 +14,10 @@ var server = new WebpackDevServer(compiler, {
   //set path for server to watch for updates
   // publicPath: path.resolve(process.cwd(), "src"),
 
-  disableHostCheck: true
+  disableHostCheck: true,
+  historyApiFallback: {
+    index: 'index.html'
+  }
 });
 
 //listen on port

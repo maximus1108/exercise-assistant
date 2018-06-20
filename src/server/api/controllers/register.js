@@ -18,7 +18,8 @@ module.exports = (req, res) => {
             const token = User.createJwt();
 
             res.json({
-                token
+                token,
+                error: false
             })
         })
         .catch(err => {
