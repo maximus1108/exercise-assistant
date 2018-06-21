@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { notDeepEqual } from 'assert';
 
-class Login extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,9 @@ class Login extends Component {
 
         axios.post(`${__SERVER__}/api/register`, {
             email: data.get('email'),
-            password: data.get('password') 
+            password: data.get('password')
+        }, {
+            withCredentials: true
         })
         .then(response => {
             const { data } = response;
@@ -50,4 +52,4 @@ class Login extends Component {
     }
 }
 
-export default Login; 
+export default Register; 
