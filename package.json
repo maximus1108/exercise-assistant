@@ -11,7 +11,7 @@
     "server:build": "node scripts/server.js",
     "postinstall": "npm run client:build && npm run server:build",
     "start": "node ./build/server/server.js",
-    "test": ""
+    "test": "jest ./src/server/api/models/User.spec.js"
   },
   "author": "Max Perry",
   "license": "ISC",
@@ -48,6 +48,7 @@
     "foreman": "^2.0.0",
     "html-webpack-exclude-assets-plugin": "0.0.7",
     "html-webpack-plugin": "^3.1.0",
+    "jest": "^23.6.0",
     "node-sass": "^4.8.3",
     "nodemon": "^1.17.3",
     "optimize-css-assets-webpack-plugin": "^3.2.0",

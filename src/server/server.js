@@ -20,7 +20,7 @@ if(env === 'development') {
 else if (env === 'production') {
     const path = require('path');
     
-    const client = path.resolve( 'build', 'client');
+    const client = path.resolve('build', 'client');
 
     app.use('/assets/js', express.static(path.resolve(client, 'assets/js')));
     app.use('/assets/css', express.static(path.resolve(client, 'assets/css')));

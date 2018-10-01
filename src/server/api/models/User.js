@@ -49,7 +49,7 @@ UserSchema.methods.setPassword = function(plainText) {
         bcrypt.hash(plainText, 12, (err, hash) => {
             if(err) reject(err);
             this.password = hash;
-            resolve();
+            resolve(true);
         })
     }) 
 }
