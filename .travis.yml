@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - "8.11"
+- '8.11'
 install:
-  - npm install
+- npm install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Buyt00uHFHvd2zoC11tTX8rtZm7Lf8Km+X8KXb1Oo+6WKMOjQ5QE0N+ql12fOxvAoM9+tSKmMf4xkjLT+EooNvGxOEpXi6w33++PQcpSiJCqagb3HXSuTFLGRY+8eD/SEU1OI4u+g9mw42hi+QyfVK3pn9rWwGk1Kaom9haCq3i6z8Oak6aAgrDUq6VIeCDyK0m4aPryR8MYAqNn70t9n1rCiUBawGWem230pf9jhf/7pEkoW13MRNkaRAgqJs1ZjyZiBQ99Ph/n0IysBHbwdiCi29F8RyljIwzFxbxjwFow40q0PsujMdTAVn2f1wnavMF9nUrSeMVWt65Q5gUX2mcC0iVAJIp90AphuoAQ+nCQ1a1bUH0lgUd2xyzb4XDc6Vp7y8nxCAOVsxYq89vCh3yPFysTG1XpWkMIKnia0gqf+nSuqlMPFBqG63t5uLRqohyzr3rKuTK5WOPIlmVvfweF4HsszwuuZY0QMzUATvFqg8XVVbK3dxqHwDe0CHFYrlDmprHPrITUzeP+foj5rcaU2AhJxWctKsNihL4o1zODshAf4++rqpl0WKX7TFA+WZSukURjT4bzwrXimYGZsI6YKU/wD5C2lkQtdn8Zq+UKNCR35Oqj/YWB6zHm9x8wAH9MAABdG9XxBBAQgWXii+AyxkL3KB14tHd39jsJlIo=
