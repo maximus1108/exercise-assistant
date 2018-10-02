@@ -1,4 +1,4 @@
-https://travis-ci.org/maximus1108/fitness-assistant.svg?branch=master
+[![Build Status](https://travis-ci.org/maximus1108/fitness-assistant.svg?branch=master)](https://travis-ci.org/maximus1108/fitness-assistant)
 
 # Fitness Assistant
 
