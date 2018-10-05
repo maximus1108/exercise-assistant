@@ -12,16 +12,23 @@ const UserSchema = new mongoose.Schema({
     password: {
         required: true,
         type: String,        
+    },
+    active: {
+        required: true,
+        type: Boolean
+    },
+    firstName: {
+        type: String,
+        required: true
+    },
+    surname: {
+        type: String,
+        required: true
+    },
+    DOB: {
+        required: true,
+        type: Date
     }
-    //,
-    // firstName: {
-    //     type: String,
-    //     required: true
-    // },
-    // surname: {
-    //     type: String,
-    //     required: true
-    // }
 });
 
 UserSchema.pre('save', function(next) {

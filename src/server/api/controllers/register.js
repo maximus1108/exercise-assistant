@@ -10,6 +10,9 @@ module.exports = (req, res) => {
 
     //store the email sent in the request on the user
     User.email = req.body.email;
+    User.email = req.body.firstName;
+    User.email = req.body.surname;
+    User.email = req.body.DOB;
 
     User.setPassword(req.body.password)
         .then(_ => User.save())
@@ -18,7 +21,7 @@ module.exports = (req, res) => {
             const token = User.createJwt();
             
             //change secure to true when we set up SSL environment
-            res.cookie('jwt', token, { secure: false, httpOnly: true });
+            // res.cookie('jwt', token, { secure: false, httpOnly: true });
 
             res.json({
                 error: false
