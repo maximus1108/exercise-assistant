@@ -13,10 +13,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
         type: String,        
     },
-    active: {
-        required: true,
-        type: Boolean
-    },
     firstName: {
         type: String,
         required: true
@@ -25,6 +21,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    active: {
+        required: true,
+        type: Boolean,
+        default: false
+    }
     // DOB: {
     //     required: true,
     //     type: Date
