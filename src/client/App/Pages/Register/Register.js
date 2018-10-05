@@ -36,6 +36,14 @@ class Register extends Component {
             <Fragment>
                 <h1>Register</h1>
                 <form onSubmit={this.handleFormSubmit}>
+                    <label htmlFor="firstname">First name:  </label>
+                    <input type="text" id="firstname" name="firstname"/>
+                    <br />
+                    <br />
+                    <label htmlFor="surname">Surname:  </label>
+                    <input type="text" id="surname" name="surname"/>
+                    <br />
+                    <br />
                     <label htmlFor="email">Email:  </label>
                     <input type="text" id="email" name="email"/>
                     <br />

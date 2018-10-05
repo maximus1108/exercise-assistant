@@ -25,10 +25,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    DOB: {
-        required: true,
-        type: Date
-    }
+    // DOB: {
+    //     required: true,
+    //     type: Date
+    // }
 });
 
 UserSchema.pre('save', function(next) {
