@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
+const { generateHash, sendVerificationEmail } = require('./verification')
 
 module.exports = (req, res) => {
 
     //get model for user from mongoose
     const userModel = mongoose.model('User');
+    const verificationModel = mongoose.model('Verification');
 
     //create new instance of user model
     const User = new userModel();
+    const Verification = new verificationModel();
+
+    Verification.userId = User._id
+    Verification.hash = generateHash(16)
 
     //store the email sent in the request on the user
     User.email = req.body.email;
@@ -15,6 +21,8 @@ module.exports = (req, res) => {
 
     User.setPassword(req.body.password)
         .then(_ => User.save())
+        .then(_ => Verification.save())
+        .then(_ => sendVerificationEmail(req.body.email, Verification.hash))
         .then(_ => {
 
             // const token = User.createJwt();
