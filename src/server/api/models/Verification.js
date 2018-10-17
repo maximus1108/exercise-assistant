@@ -13,3 +13,5 @@ const VerificationSchema = new mongoose.Schema({
 });
 
 const VerificationModel = mongoose.model('Verification', VerificationSchema);
+
+module.exports = VerificationModel;

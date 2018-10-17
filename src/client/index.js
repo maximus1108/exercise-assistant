@@ -14,6 +14,7 @@ import Home from './App/Pages/Home/Home';
 import Login from './App/Pages/Login/Login';
 import Register from './App/Pages/Register/Register';
 import Profile from './App/Pages/Profile/Profile';
+import Verify from './App/Pages/Verify/Verify';
 
 render(
     <Router>
@@ -22,6 +23,7 @@ render(
             <Route path="/login" component={ Login } />
             <Route path="/register" component={ Register } />
             <Route path="/profile" component={ Profile } />
+            <Route path="/verify" component={ Verify } />
         </Fragment> 
     </Router>
     , document.getElementById('root'));

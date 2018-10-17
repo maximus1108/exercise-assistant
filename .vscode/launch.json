@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nodemon",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/src/server/server.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "DEV_NODE_ENV": "development",
+                "SECRET": "DEV_SECRET",
+                "DEV_PORT": "3000",
+                "MONGODB_URI": "mongodb://admin:admin1@ds141068.mlab.com:41068/fitness-assistant",
+                "DEV_SERVER": "http://localhost:3001"
+            }
+        }
+    ]
+}

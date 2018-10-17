@@ -3,13 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Home extends Component {
-
-    componentDidMount(){
-        axios(`${__SERVER__}/api`)
-            .then(json => console.log(json))
-            .catch(e => console.log(e));
-    }
-
     render () {
         return (
             <Fragment>

@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 const nodeExternals = require('webpack-node-externals');
 
 const root = process.cwd();

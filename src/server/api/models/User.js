@@ -85,3 +85,5 @@ UserSchema.methods.createJwt = function() {
 
 const UserModel = mongoose.model('User', UserSchema);
 
+module.exports = UserModel;
+

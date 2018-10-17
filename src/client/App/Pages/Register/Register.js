@@ -14,23 +14,23 @@ class Register extends Component {
         const data = new FormData(e.target);
 
         axios.post(`${__SERVER__}/api/register`, {
-            email: data.get('email'),
-            password: data.get('password'),
-            firstName: data.get('firstname'),
-            surname: data.get('surname')
-        }, {
-            withCredentials: true
-        })
-        .then(response => {
-            const { data } = response;
-            console.log(response)
-            if(data.error === false) {
-                this.props.history.push('/profile');
-            }
-            else throw new Error(data.error);
-            
-        })
-        .catch(e => console.log(e));
+                email: data.get('email'),
+                password: data.get('password'),
+                firstName: data.get('firstname'),
+                surname: data.get('surname')
+            }, {
+                withCredentials: true
+            })
+            .then(response => {
+                const { data } = response;
+                console.log(response)
+                if(data.error === false) {
+                    this.props.history.push('/profile');
+                }
+                else throw new Error(data.error);
+                
+            })
+            .catch(e => console.log(e));
 
     }
 
