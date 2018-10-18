@@ -50,7 +50,8 @@ module.exports = merge(common, {
                 }, {
                     loader: "sass-loader",
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
+                        includePaths: ["./node_modules/bootstrap/scss"]
                     }
                 }]
             }, {
