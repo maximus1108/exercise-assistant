@@ -7,8 +7,14 @@ class Profile extends Component {
         axios.get(`${__SERVER__}/api/profile`, {
             withCredentials: true
         })
-        .then(response => console.log(response))
-        console.log('profile mounted')
+        .then(response => {
+            const { data } = response;
+            console.log(response)
+            if(data.error === true) {
+                this.props.history.push('/login');
+                alert('unauthorised')
+            }
+        })
     }
 
     render () { 

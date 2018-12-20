@@ -5,6 +5,9 @@ class Register extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            registered: false
+        }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
@@ -25,7 +28,10 @@ class Register extends Component {
                 const { data } = response;
                 console.log(response)
                 if(data.error === false) {
-                    this.props.history.push('/profile');
+                    // this.props.history.push('/profile');
+                    this.setState(Object.assign({}, this.state, {
+                        registered: true
+                    }))
                 }
                 else throw new Error(data.error);
                 
@@ -38,25 +44,33 @@ class Register extends Component {
         return (
             <Fragment>
                 <h1>Register</h1>
-                <form onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="firstname">First name:  </label>
-                    <input type="text" id="firstname" name="firstname"/>
-                    <br />
-                    <br />
-                    <label htmlFor="surname">Surname:  </label>
-                    <input type="text" id="surname" name="surname"/>
-                    <br />
-                    <br />
-                    <label htmlFor="email">Email:  </label>
-                    <input type="text" id="email" name="email"/>
-                    <br />
-                    <br />
-                    <label htmlFor="password">Password:  </label>
-                    <input type="password" id="password" name="password"/>
-                    <br />
-                    <br />
-                    <button>Submit</button>
-                </form>
+                { 
+                    this.state.registered ? (
+                        <div>
+                            Successfully registered, please check your emails and verify your account
+                        </div>
+                    ) : (
+                        <form onSubmit={ this.handleFormSubmit }>
+                            <label htmlFor="firstname">First name:  </label>
+                            <input type="text" id="firstname" name="firstname"/>
+                            <br />
+                            <br />
+                            <label htmlFor="surname">Surname:  </label>
+                            <input type="text" id="surname" name="surname"/>
+                            <br />
+                            <br />
+                            <label htmlFor="email">Email:  </label>
+                            <input type="text" id="email" name="email"/>
+                            <br />
+                            <br />
+                            <label htmlFor="password">Password:  </label>
+                            <input type="password" id="password" name="password"/>
+                            <br />
+                            <br />
+                            <button>Submit</button>
+                        </form>
+                    )
+                }
             </Fragment>                    
         )
     }

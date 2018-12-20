@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import querystring from 'query-string';
 import { pipe } from '../../../../utils/functional'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Verify extends Component {
     constructor() {
@@ -51,7 +52,7 @@ class Verify extends Component {
     getVerificationText(verified) {
         console.log(verified)
         if(verified === true) {
-            return <p>Your account has been successfully verfied, please login!</p>
+            return <p>Your account has been successfully verfied, please <Link to='/login'>login</Link>!</p>
         }
         else if (verified === false) {
             return <p>We have been unable to verify your account</p>

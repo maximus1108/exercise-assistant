@@ -5,17 +5,14 @@ module.exports = (req, res) => {
     passport.authenticate('local', {
         session: false
     }, (err, user) => {
-        if (err) {
+        if (err || !user) {
             res.json({
                 message: err && err.message,
                 error: true
             })
         } else {
-            const token = user.createJwt();
-
-            res.json({
-                token
-            });
+            const jwt = user.createJwt();
+            res.cookie({ jwt }, { httpOnly: true }).json({ error: false })
         }
     })(req, res);
 }

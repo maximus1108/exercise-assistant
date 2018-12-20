@@ -9,6 +9,7 @@
     "server:start": "nodemon src/server/server.js",
     "client:build": "node scripts/build.js",
     "server:build": "node scripts/server.js",
+    "build:run": "node scripts/run-build.js",
     "postinstall": "npm run client:build && npm run server:build",
     "start": "node ./build/server/server.js",
     "test": "jest ./src/server/api/models/User.spec.js"
