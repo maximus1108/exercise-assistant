@@ -12,7 +12,7 @@ module.exports = (req, res) => {
             })
         } else {
             const jwt = user.createJwt();
-            res.cookie({ jwt }, { httpOnly: true }).json({ error: false })
+            res.cookie('jwt', jwt, { httpOnly: true }).json({ error: false })
         }
     })(req, res);
 }

@@ -28,7 +28,6 @@ class Register extends Component {
                 const { data } = response;
                 console.log(response)
                 if(data.error === false) {
-                    // this.props.history.push('/profile');
                     this.setState(Object.assign({}, this.state, {
                         registered: true
                     }))

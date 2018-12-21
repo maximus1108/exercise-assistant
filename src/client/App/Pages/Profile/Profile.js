@@ -12,7 +12,6 @@ class Profile extends Component {
             console.log(response)
             if(data.error === true) {
                 this.props.history.push('/login');
-                alert('unauthorised')
             }
         })
     }

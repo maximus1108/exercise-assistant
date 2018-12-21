@@ -24,9 +24,6 @@ class Login extends Component {
                 console.log(response, data)
                 if(data.error === false) {
                     this.props.history.push('/profile');
-                    // this.setState(Object.assign({}, this.state, {
-                    //     registered: true
-                    // }))
                 }
                 else throw new Error(data.error);
                 
@@ -36,7 +33,7 @@ class Login extends Component {
     }
 
 
-    render () {
+    render() {
         return (
             <Fragment>
                 <h1>Login</h1>
@@ -48,7 +45,6 @@ class Login extends Component {
                     <label htmlFor="password">Password:  </label>
                     <input type="password" id="password" name="password"/>
                     <button>Submit</button>
-
                 </form>
             </Fragment>                    
         )
