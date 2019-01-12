@@ -14,16 +14,17 @@ passport.use(new LocalStrategy({
         .then(user =>  
             new Promise((resolve, reject) =>
                 user 
-                    ? user.validPassword(password)
-                            .then(isValid => isValid ? resolve(user) : reject(new Error('Invalid password')))
-                    : reject(new Error('User does not exist'))
+                    ? user.active 
+                        ? user.validPassword(password)
+                              .then(isValid => isValid ? resolve(user) : reject(new Error('Incorrect password.')))
+                        : reject(new Error('Account not activated, please check your emails.'))
+                    : reject(new Error('User does not exist with that email address.'))
             )
         )
         .then(user => 
             done(null, user)
         )
         .catch(err => {
-            console.log(err)
             done(err, null)
         })
 }));

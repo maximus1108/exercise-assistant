@@ -1,0 +1,44 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/utilities/flex';
+@import '~bootstrap/scss/utilities/sizing';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/utilities';
+
+
+
+.container--90h{
+    height: 90vh;
+}
+
+.container__h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.container__link {
+    display: block;
+    font-size: 80%;
+    text-decoration: underline;
+    margin-top: 8px;
+}
+
+.container__blurb {
+    margin-bottom: 40px;
+}
+
+.btn--pair {
+    margin: 0 10px;
+}
+
+.form__feedback {
+    display: block;
+    position: absolute;
+    margin-top: 12px;
+    width: calc(100% - 30px);
+}

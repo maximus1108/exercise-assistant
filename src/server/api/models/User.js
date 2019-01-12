@@ -12,16 +12,20 @@ const UserSchema = new mongoose.Schema({
     password: {
         required: true,
         type: String,        
+    },
+    firstName: {
+        type: String,
+        required: true
+    },
+    surname: {
+        type: String,
+        required: true
+    },
+    active: {
+        required: true,
+        type: Boolean,
+        default: false
     }
-    //,
-    // firstName: {
-    //     type: String,
-    //     required: true
-    // },
-    // surname: {
-    //     type: String,
-    //     required: true
-    // }
 });
 
 UserSchema.pre('save', function(next) {
@@ -29,13 +33,13 @@ UserSchema.pre('save', function(next) {
         if(err) {
             next({ 
                 error: err,
-                message: 'Error occured when attempting to save user'
+                message: 'Error occured when attempting to save user.'
             });
         }
         else if(user) {
             next({ 
                 error: new Error('User Exists'),
-                message:  `An account is already registered with the email address '${this.email}'`
+                message:  `An account is already registered with the email address '${this.email}'.`
             });
         }
         else {
@@ -76,4 +80,6 @@ UserSchema.methods.createJwt = function() {
 }
 
 const UserModel = mongoose.model('User', UserSchema);
+
+module.exports = UserModel;
 

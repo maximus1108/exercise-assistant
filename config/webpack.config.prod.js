@@ -21,7 +21,7 @@ const criticalCSS = new ExtractTextPlugin('critical.css');
 module.exports = merge(common, {
     entry: [
         "./src/client/index.js"
-    ],    
+    ],
     output: {
         //Set location for where bundled js should be served
         hashDigestLength: 6,
@@ -49,6 +49,9 @@ module.exports = merge(common, {
                         }
                     }, {
                         loader: "sass-loader",
+                        options: {
+                            includePaths: ["./node_modules/bootstrap/scss"]
+                        }
                     }]
                 })
             },

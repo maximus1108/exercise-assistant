@@ -40,6 +40,7 @@ require('./api/config/db');
 //GET MODELS FOR MONGOOSE
 //register our schema and model for a use with mongoonse
 require('./api/models/User');
+require('./api/models/Verification');
 
 //GET CONFIG FOR PASSPORT
 require('./api/config/passport');

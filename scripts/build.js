@@ -6,7 +6,7 @@ webpack(config, function(err, stats) {
       // Handle errors
       return console.log(err, stats.compilation.errors)
     }
-    
+  
     // Done processing
     console.log('built');
   });
