@@ -26,10 +26,6 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-    // DOB: {
-    //     required: true,
-    //     type: Date
-    // }
 });
 
 UserSchema.pre('save', function(next) {
