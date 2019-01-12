@@ -3,6 +3,7 @@ const verificationModel = require('../models/Verification');
 const userModel = require('../models/User');
 
 const devHost = process.env.DEV_SERVER || '';
+const companyEmail = `${devHost ? 'test' : 'info'}.fitnessassistant@gmail.com`;
 
 const generateHash = length =>  {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -17,14 +18,14 @@ const sendVerificationEmail = (email, hash = generateHash(16), host) => {
     const transporter = mailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'test.fitnessassistant@gmail.com',
-            pass: 'fitnesstest1'
+            user: companyEmail,
+            pass: devHost ? 'fitnesstest1' : process.env.EMAIL_PWORD
         }
     });
 
     transporter
         .sendMail({
-            from: '"Fitness Assistant" <test.fitnessassistant@gmail.com>',
+            from: `"Fitness Assistant" <${companyEmail}>`,
             to: devHost ? 'test.fitnessassistant@gmail.com' : email,
             subject: 'Fitness Assistant: Email Verification',
             html: `<p>Thanks for registering with Fitness Assistant, please click the link below to confirm your email:</p>
