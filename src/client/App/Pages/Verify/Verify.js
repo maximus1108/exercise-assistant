@@ -50,14 +50,9 @@ class Verify extends Component {
     }
 
     getVerificationText(verified) {
-        console.log(verified)
-        if(verified === true) {
-            return <p>Your account has been successfully verfied, please <Link to='/login'>login</Link>!</p>
-        }
-        else if (verified === false) {
-            return <p>We have been unable to verify your account</p>
-        }
-        else return null
+        return verified === true
+            ? "Your account has been successfully verified."
+            : "We have been unable to verify your account.";
     }
 
     getVerifyId(url){
@@ -67,10 +62,28 @@ class Verify extends Component {
     render () { 
         const { verified } = this.state;
         return (
-            <Fragment>
-                <h1>Verify</h1>
-                { this.getVerificationText(verified) }
-            </Fragment>                    
+            <div className="container">
+                <div className="row justify-content-center align-items-center container--90h">
+                    <div className="col-12 text-center">
+                        <h1 className="container__h1">Account Verification</h1>
+                        <p className="container__blurb">
+                            { this.getVerificationText(verified) }
+                        </p>
+                        <Link
+                            to='/login'
+                            className="btn btn-primary btn-lg btn--pair"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to='/'
+                            className="btn btn-outline-primary btn-lg btn--pair"
+                        >
+                            Home
+                        </Link>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

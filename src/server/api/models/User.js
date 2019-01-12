@@ -37,13 +37,13 @@ UserSchema.pre('save', function(next) {
         if(err) {
             next({ 
                 error: err,
-                message: 'Error occured when attempting to save user'
+                message: 'Error occured when attempting to save user.'
             });
         }
         else if(user) {
             next({ 
                 error: new Error('User Exists'),
-                message:  `An account is already registered with the email address '${this.email}'`
+                message:  `An account is already registered with the email address '${this.email}'.`
             });
         }
         else {
