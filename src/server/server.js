@@ -17,18 +17,6 @@ if(env === 'development') {
         next();
     });
 }
-else if (env === 'production') {
-    const path = require('path');
-    
-    const client = path.resolve('build', 'client');
-
-    app.use('/assets/js', express.static(path.resolve(client, 'assets/js')));
-    app.use('/assets/css', express.static(path.resolve(client, 'assets/css')));
-
-    app.get('/', (req, res) => {
-        res.sendFile(path.resolve(client, 'index.html'));
-    });
-}
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -53,6 +41,19 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 app.use('/api', apiRouter);
+
+if (env === 'production') {
+    const path = require('path');
+    
+    const client = path.resolve('build', 'client');
+
+    app.use('/assets/js', express.static(path.resolve(client, 'assets/js')));
+    app.use('/assets/css', express.static(path.resolve(client, 'assets/css')));
+
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(client, 'index.html'));
+    });
+}
 
 app.listen(port, function() {
     console.log(`api running on port ${port}`);
