@@ -22,7 +22,7 @@ const sendVerificationEmail = (email, hash = generateHash(16), host) => {
             pass: devHost ? 'fitnesstest1' : process.env.EMAIL_PWORD
         }
     });
-
+    console.log( process.env.EMAIL_PWORD, companyEmail, email );
     transporter
         .sendMail({
             from: `"Fitness Assistant" <${companyEmail}>`,
