@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const prod = (process.env.DEV_NODE_ENV || process.env.NODE_ENV) === 'production';
+// const prod = (process.env.DEV_NODE_ENV || process.env.NODE_ENV) === 'production';
 
 module.exports = (req, res) => {
     passport.authenticate('local', {
@@ -17,7 +17,9 @@ module.exports = (req, res) => {
             res.cookie('jwt', jwt, { 
                 httpOnly: true,
                 maxAge: 1000 * 60 * 60 * 24,
-                secure: prod
+                //as this is an experiment at the moment, we are not using SSL so leave as false for now
+                //in future will need to set to true when in production
+                secure: false 
             })
             .json({
                 error: false
